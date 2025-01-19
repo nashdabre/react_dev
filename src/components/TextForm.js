@@ -12,8 +12,10 @@ const handleExtractSpecialChars = () => {
   // Use a regular expression to match all special characters
   let specialChars = text.match(/[^a-zA-Z0-9\s]/g);
   let newText = specialChars ? specialChars.join('') : '';
-  setText(newText);
+  setspecial(newText || '')
 }
+
+
 
 
 const handleDownClick = () =>{
@@ -30,7 +32,15 @@ const handleOnChange = (event) =>{
     setText(event.target.value);
 }
 
+const handleExtractEmail = () => {
+  const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+  const extractedEmails = text.match(emailRegex);
+  setEmails(extractedEmails || []); // Save the extracted emails to state
+};
+
     const [text, setText] = useState('');//hooks
+    const[spec,setspecial] = useState('')
+    const [emails, setEmails] = useState([]);
     
 
   return (
@@ -48,7 +58,7 @@ const handleOnChange = (event) =>{
   <button className="btn btn-primary mx-2" onClick={handleDownClick}>Convert to LowerCase</button>
   <button className="btn btn-primary mx-2" onClick={handlecleartext}>clear</button>
   <button className="btn btn-primary mx-2" onClick={handleExtractSpecialChars}>special char</button>
-
+  <button className="btn btn-primary mx-2" onClick={handleExtractEmail}>Extract Emails</button>
 
 
 </div>
@@ -58,6 +68,24 @@ const handleOnChange = (event) =>{
     <p>{0.008 * text.split(" ").length} Mintues read</p>
     <h2>Preview</h2>
     <p>{text}</p>
+    {spec.length >0 && (
+      <>
+      <h2>Extracted special char</h2>
+      <p>{spec}</p>
+      </>
+    )
+
+    }
+    {emails.length > 0 && (
+          <>
+            <h2>Extracted Emails</h2>
+            <ul>
+              {emails.map((email, index) => (
+                <li key={index}>{email}</li>
+              ))}
+            </ul>
+          </>
+        )}
 </div>
 </>
     
