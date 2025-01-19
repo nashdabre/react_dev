@@ -26,6 +26,8 @@ const handleDownClick = () =>{
 const handlecleartext = () =>{
   let newText = "";
   setText(newText)
+  setEmails([])
+  setspecial('')
 }
 
 const handleOnChange = (event) =>{
