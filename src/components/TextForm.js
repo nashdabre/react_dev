@@ -62,7 +62,7 @@ const handleExtractEmail = () => {
     <h1>{props.heading}</h1>
   <div className="mb-3">
     <textarea
-      className="form-control" value={text} style={{backgroundColor: props.mode==='light'?'white':'grey', color: props.mode==='light'?'042743':'white'}} onChange={handleOnChange}
+      className="form-control" value={text} style={{backgroundColor: props.mode==='light'?'white':'grey', color: props.mode==='light'?'#042743':'white'}} onChange={handleOnChange}
       id="mybox"
       rows="3"
     ></textarea>
