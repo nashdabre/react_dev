@@ -58,11 +58,11 @@ const handleExtractEmail = () => {
 
   return (
     <>
-    <div>
+    <div className='container' style={{color: props.mode==='light'?'#042743':'white'}}>
     <h1>{props.heading}</h1>
   <div className="mb-3">
     <textarea
-      className="form-control" value={text} onChange={handleOnChange}
+      className="form-control" value={text} style={{backgroundColor: props.mode==='light'?'white':'grey', color: props.mode==='light'?'042743':'white'}} onChange={handleOnChange}
       id="mybox"
       rows="3"
     ></textarea>
@@ -79,7 +79,7 @@ const handleExtractEmail = () => {
 
 
 </div>
-<div className='container my-3'>
+<div className='container my-3' style={{color: props.mode==='light'?'black':'white'}}>
   <h1>Your text summary</h1> 
     <p>{
     text.split(/\s+/) // Split text by spaces or newlines
