@@ -6,6 +6,7 @@ export default function TextForm(props) {
 const handleUpClick = () =>{
     let newText = text.toUpperCase();
     setText(newText)
+    props.showAlert("Converted to uppercase!","success");
 }
 
 const handleExtractSpecialChars = () => {
@@ -13,6 +14,7 @@ const handleExtractSpecialChars = () => {
   let specialChars = text.match(/[^a-zA-Z0-9\s]/g);
   let newText = specialChars ? specialChars.join('') : '';
   setspecial(newText || '')
+  props.showAlert("Special char extracted!","success");
 }
 
 
@@ -21,6 +23,7 @@ const handleExtractSpecialChars = () => {
 const handleDownClick = () =>{
     let newText = text.toLowerCase();
     setText(newText)
+    props.showAlert("Converted to lowercase!","success");
 }
 
 const handlecleartext = () =>{
@@ -28,12 +31,14 @@ const handlecleartext = () =>{
   setText(newText)
   setEmails([])
   setspecial('')
+  props.showAlert("Text cleared!","success");
 }
 
 const handleCopy = () => {
   var text = document.getElementById("mybox");
   text.select();
   navigator.clipboard.writeText(text.value);
+  props.showAlert("Text copied succefully!","success");
 }
 
 const handleExtraSpaces = () => {
