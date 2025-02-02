@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 
 
 export default function TextForm(props) {
+  
 const handleUpClick = () =>{
     let newText = text.toUpperCase();
     setText(newText)
@@ -38,6 +39,7 @@ const handleCopy = () => {
   var text = document.getElementById("mybox");
   text.select();
   navigator.clipboard.writeText(text.value);
+  document.getSelection().removeAllRanges();
   props.showAlert("Text copied succefully!","success");
 }
 
@@ -72,13 +74,13 @@ const handleExtractEmail = () => {
       rows="3"
     ></textarea>
   </div>
-  <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-  <button className="btn btn-primary mx-2" onClick={handleDownClick}>Convert to LowerCase</button>
-  <button className="btn btn-primary mx-2" onClick={handlecleartext}>clear</button>
-  <button className="btn btn-primary mx-2" onClick={handleExtractSpecialChars}>special char</button>
-  <button className="btn btn-primary mx-2" onClick={handleExtractEmail}>Extract Emails</button>
-  <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-  <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>handle extra space</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleDownClick}>Convert to LowerCase</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handlecleartext}>clear</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleExtractSpecialChars}>special char</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleExtractEmail}>Extract Emails</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+  <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>handle extra space</button>
 
 
 
